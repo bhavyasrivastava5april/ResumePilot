@@ -3,13 +3,133 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI RESUME ANALYSER</title>
-</head>
+    <title>AI Resume Analyzer</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
 <body>
-    <h1>UPLOAD YOUR RESUME</h1>
-<form action="">
-    <input type="file">
-  <div>  <button>Upload</button></div>
-</form>
+
+    <div class="container">
+
+        <header>
+            <h1>🤖 AI Resume Analyzer</h1>
+            <p>
+                Analyze your resume, compare it with job requirements,
+                and get personalized recommendations instantly.
+            </p>
+        </header>
+
+        <div class="card">
+
+            <form method="POST" enctype="multipart/form-data">
+
+                <h2>Upload Resume</h2>
+
+                <input
+                    type="file"
+                    name="resume"
+                    accept=".pdf"
+                    required
+                >
+
+                <br><br>
+
+                <h2>Paste Job Description</h2>
+
+                <textarea
+                    name="job_description"
+                    rows="8"
+                    placeholder="Paste the job description here..."
+                ></textarea>
+
+                <br><br>
+
+                <button type="submit">
+                    Analyze Resume
+                </button>
+
+            </form>
+
+        </div>
+
+        <div class="stats">
+
+            <div class="stat-card">
+                <h3>ATS Score</h3>
+                <div class="score">85%</div>
+            </div>
+
+            <div class="stat-card">
+                <h3>Skills Found</h3>
+                <p>Java, HTML, CSS</p>
+            </div>
+
+            <div class="stat-card">
+                <h3>Missing Skills</h3>
+                <p>React, SQL</p>
+            </div>
+
+        </div>
+
+        <div class="card">
+
+            <h2>How It Works</h2>
+
+            <br>
+
+            <p>
+                📄 Upload Resume
+            </p>
+
+            <p>
+                ↓
+            </p>
+
+            <p>
+                🔍 Extract Resume Text
+            </p>
+
+            <p>
+                ↓
+            </p>
+
+            <p>
+                🧠 Analyze Skills
+            </p>
+
+            <p>
+                ↓
+            </p>
+
+            <p>
+                📊 Match With Job Description
+            </p>
+
+            <p>
+                ↓
+            </p>
+
+            <p>
+                ✅ Generate Recommendations
+            </p>
+
+        </div>
+
+        <div class="card">
+
+            <h2>Technologies Used</h2>
+
+            <br>
+
+            <p>
+                Python • Flask • PyPDF2 • HTML • CSS • JavaScript
+            </p>
+
+        </div>
+
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
 </body>
 </html>

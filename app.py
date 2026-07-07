@@ -1,6 +1,8 @@
-from PyPDF2 import PdfReader
 from flask import Flask, render_template, request
 import os
+
+from utils.extractor import extract_resume_text
+from utils.analyzer import calculate_ats_score
 
 app = Flask(__name__)
 
@@ -10,7 +12,7 @@ UPLOAD_FOLDER = os.path.join(BASE_DIR, 'uploads')
 
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
-@app.route('/', methods=['GET', 'POST'])
+
 @app.route('/', methods=['GET', 'POST'])
 def home():
 
@@ -22,39 +24,24 @@ def home():
         filepath = os.path.join(app.config['UPLOAD_FOLDER'], file.filename)
         file.save(filepath)
 
-        reader = PdfReader(filepath)
+        # Extract text from the resume
+        resume_text = extract_resume_text(filepath)
 
-        resume_text = ""
-
-        for page in reader.pages:
-            text = page.extract_text()
-            if text:
-                resume_text += text
-
-        # Convert both to lowercase
-        resume_text = resume_text.lower()
-        job_description = job_description.lower()
-
-        # Split into words
-        resume_words = set(resume_text.split())
-        job_words = set(job_description.split())
-
-        # Find matching words
-        matched_words = resume_words.intersection(job_words)
-
-        # Calculate score
-        if len(job_words) != 0:
-            score = round((len(matched_words) / len(job_words)) * 100, 2)
-        else:
-            score = 0
+        # Calculate ATS score
+        score, matched_skills, missing_skills = calculate_ats_score(
+    resume_text,
+    job_description
+)
+        
 
         return render_template(
-            "result.html",
-            score=score,
-            matched=sorted(matched_words)
-        )
+    "result.html",
+    score=score,
+    matched_skills=matched_skills,
+    missing_skills=missing_skills
+)
+    return render_template("index.html")
 
-    return render_template('index.html')
 
 if __name__ == '__main__':
     app.run(debug=True)

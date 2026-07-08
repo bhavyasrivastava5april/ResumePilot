@@ -1,24 +1,60 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
+    <meta charset="UTF-8">
     <title>ResumePilot Result</title>
+
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
+
 <body>
 
-<h1>Resume Analysis</h1>
+<div class="container">
 
-<h2>ATS Score: {{ score }}%</h2>
+    <h1>📄 Resume Analysis</h1>
 
-<h3>Matched Keywords</h3>
+    <div class="result">
 
-<ul>
-    {% for word in matched %}
-        <li>{{ word }}</li>
-    {% endfor %}
-</ul>
+        <h2>🎯 ATS Score</h2>
+        <h3>{{ score }}%</h3>
 
-<a href="/">Analyze Another Resume</a>
+        <hr>
+
+        <h2>✅ Skills Found</h2>
+
+        {% if matched_skills %}
+        <ul>
+            {% for skill in matched_skills %}
+                <li>{{ skill.title() }}</li>
+            {% endfor %}
+        </ul>
+        {% else %}
+            <p>No matching skills found.</p>
+        {% endif %}
+
+        <hr>
+
+        <h2>❌ Skills to Improve</h2>
+
+        {% if missing_skills %}
+        <ul>
+            {% for skill in missing_skills %}
+                <li>{{ skill.title() }}</li>
+            {% endfor %}
+        </ul>
+        {% else %}
+            <p>No missing skills 🎉</p>
+        {% endif %}
+
+        <br>
+
+        <a href="/">Analyze Another Resume</a>
+
+    </div>
+
+</div>
 
 </body>
+
 </html>

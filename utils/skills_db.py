@@ -1,38 +1,38 @@
 SKILLS = [
     # Programming Languages
-    "python", "java", "c", "c++", "c#", "javascript", "typescript",
+    "Python", "Java", "C", "C++", "C#", "JavaScript", "TypeScript",
 
     # Frontend
-    "html", "css", "react", "angular", "vue", "bootstrap",
-    "tailwind css", "jquery",
+    "HTML", "CSS", "React", "Angular", "Vue", "Bootstrap",
+    "Tailwind CSS", "jQuery",
 
     # Backend
-    "flask", "django", "node.js", "express", "spring boot",
+    "Flask", "Django", "Node.js", "Express", "Spring Boot",
 
     # Databases
-    "sql", "mysql", "postgresql", "mongodb", "firebase",
+    "SQL", "MySQL", "PostgreSQL", "MongoDB", "Firebase",
 
     # Tools
-    "git", "github", "docker", "kubernetes", "postman",
+    "Git", "GitHub", "Docker", "Kubernetes", "Postman",
 
     # Cloud
-    "aws", "azure", "google cloud",
+    "AWS", "Azure", "Google Cloud",
 
     # Data Science
-    "numpy", "pandas", "matplotlib", "tensorflow",
-    "pytorch", "machine learning",
+    "NumPy", "Pandas", "Matplotlib", "TensorFlow",
+    "PyTorch", "Machine Learning",
 
     # Core CS
-    "data structures",
-    "algorithms",
-    "operating system",
-    "computer networks",
-    "dbms",
-    "oop",
+    "Data Structures",
+    "Algorithms",
+    "Operating System",
+    "Computer Networks",
+    "DBMS",
+    "OOP",
 
     # Others
-    "linux",
-    "rest api",
-    "figma",
-    "excel"
+    "Linux",
+    "REST API",
+    "Figma",
+    "Excel"
 ]

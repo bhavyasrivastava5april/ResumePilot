@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 import os
+from utils.suggestions import generate_suggestions
 
 from utils.extractor import extract_resume_text
 from utils.analyzer import calculate_ats_score
@@ -29,17 +30,21 @@ def home():
 
         # Calculate ATS score
         score, matched_skills, missing_skills = calculate_ats_score(
-    resume_text,
-    job_description
-)
-        
+            resume_text,
+            job_description
+        )
+
+        # Generate suggestions
+        suggestions = generate_suggestions(missing_skills)
 
         return render_template(
-    "result.html",
-    score=score,
-    matched_skills=matched_skills,
-    missing_skills=missing_skills
-)
+            "result.html",
+            score=score,
+            matched_skills=matched_skills,
+            missing_skills=missing_skills,
+            suggestions=suggestions
+        )
+
     return render_template("index.html")
 
 

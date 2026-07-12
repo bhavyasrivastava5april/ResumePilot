@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ResumePilot Result</title>
+    <title>ResumePilot | Analysis Result</title>
 
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
@@ -13,58 +13,116 @@
 
 <div class="container">
 
-    <h1>📄 Resume Analysis</h1>
+    <!-- Header -->
+    <header class="header">
+        <h1>📄 ResumePilot</h1>
+        <p>Smart Resume Analysis Report</p>
+    </header>
 
-    <div class="result">
+    <!-- ATS Score -->
+    <section class="score-card">
 
-        <h2>🎯 ATS Score</h2>
-        <h3>{{ score }}%</h3>
+        <h2>🎯 ATS Compatibility Score</h2>
 
-        <hr>
+        <div class="score-circle">
+            {{ score }}%
+        </div>
 
-        <h2>✅ Skills Found</h2>
+    </section>
 
-        {% if matched_skills %}
-            <ul>
-                {% for skill in matched_skills %}
-                    <li>{{ skill.title() }}</li>
-                {% endfor %}
-            </ul>
-        {% else %}
-            <p>No matching skills found.</p>
-        {% endif %}
+    <!-- Skills Section -->
+    <div class="skills-container">
 
-        <hr>
+        <!-- Skills Found -->
+        <div class="card">
 
-        <h2>❌ Skills to Improve</h2>
+            <h2>✅ Skills Found</h2>
 
-        {% if missing_skills %}
-            <ul>
-                {% for skill in missing_skills %}
-                    <li>{{ skill.title() }}</li>
-                {% endfor %}
-            </ul>
-        {% else %}
-            <p>No missing skills 🎉</p>
-        {% endif %}
+            {% if matched_skills %}
 
-        <hr>
+                <div class="skill-list">
 
-        <h2>💡 Suggestions</h2>
+                    {% for skill in matched_skills %}
+
+                        <span class="skill found">
+                            {{ skill.title() }}
+                        </span>
+
+                    {% endfor %}
+
+                </div>
+
+            {% else %}
+
+                <p>No matching skills found.</p>
+
+            {% endif %}
+
+        </div>
+
+        <!-- Missing Skills -->
+
+        <div class="card">
+
+            <h2>❌ Skills to Improve</h2>
+
+            {% if missing_skills %}
+
+                <div class="skill-list">
+
+                    {% for skill in missing_skills %}
+
+                        <span class="skill missing">
+                            {{ skill.title() }}
+                        </span>
+
+                    {% endfor %}
+
+                </div>
+
+            {% else %}
+
+                <p>No missing skills 🎉</p>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+    <!-- Suggestions -->
+
+    <section class="card">
+
+        <h2>💡 Recommendations</h2>
 
         {% if suggestions %}
-            <ul>
+
+            <ul class="suggestion-list">
+
                 {% for suggestion in suggestions %}
+
                     <li>{{ suggestion }}</li>
+
                 {% endfor %}
+
             </ul>
+
         {% else %}
+
             <p>Your resume already covers the required skills.</p>
+
         {% endif %}
 
-        <br>
+    </section>
 
-        <a href="/">🔄 Analyze Another Resume</a>
+    <!-- Button -->
+
+    <div class="button-container">
+
+        <a href="/" class="btn">
+            🔄 Analyze Another Resume
+        </a>
 
     </div>
 

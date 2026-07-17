@@ -1,38 +1,43 @@
-SKILLS = [
-    # Programming Languages
-    "Python", "Java", "C", "C++", "C#", "JavaScript", "TypeScript",
+SKILL_ALIASES = {
+    "HTML": ["html", "html5"],
+    "CSS": ["css", "css3"],
+    "JavaScript": ["javascript", "js", "ecmascript"],
+    "TypeScript": ["typescript", "ts"],
 
-    # Frontend
-    "HTML", "CSS", "React", "Angular", "Vue", "Bootstrap",
-    "Tailwind CSS", "jQuery",
+    "React": ["react", "react.js", "reactjs"],
+    "Angular": ["angular", "angular.js"],
+    "Vue": ["vue", "vue.js"],
 
-    # Backend
-    "Flask", "Django", "Node.js", "Express", "Spring Boot",
+    "Node.js": ["node.js", "nodejs"],
+    "Express": ["express", "express.js"],
 
-    # Databases
-    "SQL", "MySQL", "PostgreSQL", "MongoDB", "Firebase",
+    "Python": ["python"],
+    "Java": ["java"],
+    "C": ["c"],
+    "C++": ["c++", "cpp"],
 
-    # Tools
-    "Git", "GitHub", "Docker", "Kubernetes", "Postman",
+    "Flask": ["flask"],
+    "Django": ["django"],
 
-    # Cloud
-    "AWS", "Azure", "Google Cloud",
+    "SQL": ["sql"],
+    "MySQL": ["mysql"],
+    "PostgreSQL": ["postgresql", "postgres"],
+    "MongoDB": ["mongodb", "mongo"],
 
-    # Data Science
-    "NumPy", "Pandas", "Matplotlib", "TensorFlow",
-    "PyTorch", "Machine Learning",
+    "Git": ["git"],
+    "GitHub": ["github"],
 
-    # Core CS
-    "Data Structures",
-    "Algorithms",
-    "Operating System",
-    "Computer Networks",
-    "DBMS",
-    "OOP",
+    "Docker": ["docker"],
+    "Kubernetes": ["kubernetes", "k8s"],
 
-    # Others
-    "Linux",
-    "REST API",
-    "Figma",
-    "Excel"
-]
+    "AWS": ["aws", "amazon web services"],
+    "Azure": ["azure"],
+    "Google Cloud": ["google cloud", "gcp"],
+
+    "REST API": ["rest api", "rest apis", "restful api"],
+
+    "Bootstrap": ["bootstrap"],
+    "Tailwind CSS": ["tailwind", "tailwind css"],
+
+    "Figma": ["figma"]
+}

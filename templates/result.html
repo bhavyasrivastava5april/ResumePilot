@@ -12,122 +12,161 @@
 
 <body>
 
-<div class="container">
+    <div class="container">
 
-    <!-- Header -->
-    <header class="header">
-        <h1>📄 ResumePilot</h1>
-        <p>Smart Resume Analysis Report</p>
-    </header>
+        <!-- Header -->
+        <header class="header">
+            <h1>ResumePilot</h1>
+            <p>Your ATS Resume Analysis Report</p>
+        </header>
 
-    <!-- ATS Score -->
-    <section class="score-card">
+        <!-- ATS Score -->
+        <section class="score-card">
 
-        <h2>🎯 ATS Compatibility Score</h2>
+            <h2>🎯 ATS Compatibility Score</h2>
 
-        <div class="score-circle">
-            {{ score }}%
+            <div class="score-circle">
+                {{ score }}%
+            </div>
+            <p class="score-message">
+                {% if score >= 80 %}
+                Excellent! Your resume is highly compatible with this job.
+                {% elif score >= 60 %}
+                Good match! Adding a few missing skills can improve your ATS score.
+                {% else %}
+                Your resume needs more improvements to match this job description.
+                {% endif %}
+            </p>
+        </section>
+        <div class="stats-row">
+
+            <div class="stat-box">
+                <p>Matched Skills</p>
+                <h3>{{ matched_skills|length }}</h3>
+            </div>
+
+            <div class="stat-box">
+                <p>Missing Skills</p>
+                <h3>{{ missing_skills|length }}</h3>
+            </div>
+
         </div>
 
-    </section>
+        <!-- Skills Section -->
+        <div class="skills-container">
 
-    <!-- Skills Section -->
-    <div class="skills-container">
+            <!-- Skills Found -->
+            <div class="card">
 
-        <!-- Skills Found -->
-        <div class="card">
+                <h2>✅ Skills Found
+                    <span class="count">({{ matched_skills|length }})</span>
+                </h2>
 
-            <h2>✅ Skills Found</h2>
-
-            {% if matched_skills %}
+                {% if matched_skills %}
 
                 <div class="skill-list">
 
                     {% for skill in matched_skills %}
 
-                        <span class="skill found">
-                            {{ skill.title() }}
-                        </span>
+                    <span class="skill found">
+                        {{ skill.title() }}
+                    </span>
 
                     {% endfor %}
 
                 </div>
 
-            {% else %}
+                {% else %}
 
-                <p>No matching skills found.</p>
+                <p class="warning">
+                    No matching skills were found. Consider tailoring your resume to the job description.
+                </p>
 
-            {% endif %}
+                {% endif %}
 
-        </div>
+            </div>
 
-        <!-- Missing Skills -->
+            <!-- Missing Skills -->
 
-        <div class="card">
+            <div class="card">
 
-            <h2>❌ Skills to Improve</h2>
+                <h2>❌ Skills to Improve
+                    <span class="count">({{ missing_skills|length }})</span>
+                </h2>
 
-            {% if missing_skills %}
+                {% if missing_skills %}
 
                 <div class="skill-list">
 
                     {% for skill in missing_skills %}
 
-                        <span class="skill missing">
-                            {{ skill.title() }}
-                        </span>
+                    <span class="skill missing">
+                        {{ skill.title() }}
+                    </span>
 
                     {% endfor %}
 
                 </div>
 
-            {% else %}
+                {% else %}
 
-                <p>No missing skills 🎉</p>
+                <p class="success">
+                    🎉 Great! Your resume includes all required skills.
+                </p>
 
-            {% endif %}
+                {% endif %}
+
+            </div>
 
         </div>
 
-    </div>
+        <!-- Suggestions -->
 
-    <!-- Suggestions -->
+        <section class="card">
 
-    <section class="card">
+            <h2>💡 Recommendations</h2>
 
-        <h2>💡 Recommendations</h2>
-
-        {% if suggestions %}
+            {% if suggestions %}
 
             <ul class="suggestion-list">
 
                 {% for suggestion in suggestions %}
 
-                    <li>{{ suggestion }}</li>
+                <li class="recommendation-item">
+                    <span class="check-icon">✔</span>
+                    {{ suggestion }}
+                </li>
 
                 {% endfor %}
 
             </ul>
 
-        {% else %}
+            {% else %}
 
             <p>Your resume already covers the required skills.</p>
 
-        {% endif %}
+            {% endif %}
 
-    </section>
+        </section>
 
-    <!-- Button -->
+        <!-- Button -->
 
-    <div class="button-container">
+        <div class="button-container">
 
-        <a href="/" class="btn">
-            🔄 Analyze Another Resume
-        </a>
+            <a href="/" class="btn">
+                🔄 Analyze Another Resume
+            </a>
+
+
+        </div>
+         <footer class="footer">
+            <p>
+                ResumePilot compares your resume with the provided job description and highlights matching and missing
+                skills.
+            </p>
+        </footer>
 
     </div>
-
-</div>
 
 </body>
 

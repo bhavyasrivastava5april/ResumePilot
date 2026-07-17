@@ -148,6 +148,21 @@
             {% endif %}
 
         </section>
+        <div class="card">
+    <h2>Resume Sections</h2>
+
+    <div class="skill-list">
+
+        {% for section in found_sections %}
+            <span class="skill found">✓ {{ section }}</span>
+        {% endfor %}
+
+        {% for section in missing_sections %}
+            <span class="skill missing">✗ {{ section }}</span>
+        {% endfor %}
+
+    </div>
+</div>
 
         <!-- Button -->
 

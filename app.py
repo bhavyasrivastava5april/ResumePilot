@@ -4,6 +4,7 @@ from utils.suggestions import generate_suggestions
 
 from utils.extractor import extract_resume_text
 from utils.analyzer import calculate_ats_score
+from utils.section_checker import check_resume_sections
 
 app = Flask(__name__)
 
@@ -27,6 +28,7 @@ def home():
 
         # Extract text from the resume
         resume_text = extract_resume_text(filepath)
+        found_sections, missing_sections = check_resume_sections(resume_text)
 
         # Calculate ATS score
         score, matched_skills, missing_skills = calculate_ats_score(
@@ -42,7 +44,9 @@ def home():
             score=score,
             matched_skills=matched_skills,
             missing_skills=missing_skills,
-            suggestions=suggestions
+            suggestions=suggestions,
+             found_sections=found_sections,
+    missing_sections=missing_sections
         )
 
     return render_template("index.html")

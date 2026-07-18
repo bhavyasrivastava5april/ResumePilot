@@ -1,3 +1,6 @@
+from flask import send_file
+from utils.pdf_generator import generate_pdf
+
 from flask import Flask, render_template, request
 import os
 from utils.suggestions import generate_suggestions
@@ -7,6 +10,7 @@ from utils.analyzer import calculate_ats_score
 from utils.section_checker import check_resume_sections
 
 app = Flask(__name__)
+latest_report = {}
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
@@ -38,6 +42,12 @@ def home():
 
         # Generate suggestions
         suggestions = generate_suggestions(missing_skills)
+        latest_report["score"] = score
+        latest_report["matched_skills"] = matched_skills
+        latest_report["missing_skills"] = missing_skills
+        latest_report["suggestions"] = suggestions
+        latest_report["found_sections"] = found_sections
+        latest_report["missing_sections"] = missing_sections
 
         return render_template(
             "result.html",
@@ -52,5 +62,26 @@ def home():
     return render_template("index.html")
 
 
+@app.route("/download-report")
+def download_report():
+
+    pdf = generate_pdf(
+        latest_report["score"],
+        latest_report["matched_skills"],
+        latest_report["missing_skills"],
+        latest_report["suggestions"],
+        latest_report["found_sections"],
+        latest_report["missing_sections"],
+    )
+
+    return send_file(
+        pdf,
+        download_name="ResumePilot_Report.pdf",
+        as_attachment=True,
+        mimetype="application/pdf",
+    )
+
+
 if __name__ == '__main__':
     app.run(debug=True)
+    

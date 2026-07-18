@@ -121,3 +121,36 @@ button:active {
     }
 
 }
+.upload-box {
+    border: 2px dashed #6366F1;
+    border-radius: 16px;
+    padding: 45px 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: .3s;
+    background: rgba(99,102,241,.08);
+}
+
+.upload-box:hover {
+    background: rgba(99,102,241,.15);
+}
+
+.upload-icon {
+    font-size: 55px;
+    margin-bottom: 15px;
+}
+
+.upload-box h3 {
+    margin-bottom: 8px;
+}
+
+.upload-box p {
+    color: gray;
+}
+
+#fileName {
+    display: block;
+    margin-top: 18px;
+    font-weight: bold;
+    color: #6366F1;
+}

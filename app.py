@@ -1,6 +1,6 @@
 from flask import send_file
 from utils.pdf_generator import generate_pdf
-
+from utils.suggestions import generate_recommendation
 from flask import Flask, render_template, request
 import os
 from utils.suggestions import generate_suggestions
@@ -41,7 +41,11 @@ def home():
         )
 
         # Generate suggestions
-        suggestions = generate_suggestions(missing_skills)
+    recommendation = generate_recommendation(
+    score,
+    missing_skills,
+    missing_sections
+)
         latest_report["score"] = score
         latest_report["matched_skills"] = matched_skills
         latest_report["missing_skills"] = missing_skills

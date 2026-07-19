@@ -56,36 +56,30 @@
         <div class="skills-container">
 
             <!-- Skills Found -->
-            <div class="card">
+            
+           {% if matched_skills %}
+<div class="card">
+    <h2 class="section-title">
+        ✅ Skills Found ({{ matched_skills|length }})
+    </h2>
 
-                <h2>✅ Skills Found
-                    <span class="count">({{ matched_skills|length }})</span>
-                </h2>
+    <div class="skill-list">
+        {% for skill in matched_skills %}
+            <span class="skill found">{{ skill }}</span>
+        {% endfor %}
+    </div>
 
-                {% if matched_skills %}
+{% else %}
+<div class="card">
+    <h2 class="section-title warning-title">
+        ⚠ No Matching Skills Found
+    </h2>
 
-                <div class="skill-list">
-
-                    {% for skill in matched_skills %}
-
-                    <span class="skill found">
-                        {{ skill.title() }}
-                    </span>
-
-                    {% endfor %}
-
-                </div>
-
-                {% else %}
-
-                <p class="warning">
-                    No matching skills were found. Consider tailoring your resume to the job description.
-                </p>
-
-                {% endif %}
-
-            </div>
-
+    <p class="warning">
+        Your resume does not contain the important skills identified in the provided job description. Add relevant skills that genuinely reflect your experience.
+    </p>
+{% endif %}
+</div>
             <!-- Missing Skills -->
 
             <div class="card">
@@ -122,9 +116,9 @@
 
         <!-- Suggestions -->
 
-        <section class="card">
+        <section class="card recommendations-card ">
 
-            <h2>💡 Recommendations</h2>
+            <h2 class="recommendation-title">📌 Recommendations</h2>
 
             {% if suggestions %}
 
@@ -148,7 +142,7 @@
             {% endif %}
 
         </section>
-        <div class="card">
+        <div class="card resume-sections-card">
             <h2>Resume Sections</h2>
 
             <div class="skill-list">

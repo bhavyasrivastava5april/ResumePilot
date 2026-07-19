@@ -1,115 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Resume Analyzer</title>
+    <title>ResumePilot | AI Resume Analyzer</title>
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    
-      </head>
+    <link rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}">
+</head>
+
 <body>
 
-    <div class="container">
+<div class="container">
 
-        <header>
-            <h1>🤖 AI Resume Analyzer</h1>
-            <p>
-                Analyze your resume, compare it with job requirements,
-                and get personalized recommendations instantly.
-            </p>
-        </header>
-<form method="POST" enctype="multipart/form-data">
+    <!-- Hero -->
 
-                <h2>Upload Resume</h2>
+    <section class="hero">
 
-                <input
-                    type="file"
-                    name="resume"
-                    accept=".pdf"
-                    required
-                >
+        <h1>ResumePilot</h1>
 
-                <br><br>
+        <h2>Analyze Your Resume with AI</h2>
 
-                <h2>Paste Job Description</h2>
+        <p>
+            Compare your resume with a job description, discover missing
+            skills, check resume sections and download a detailed ATS
+            analysis report in seconds.
+        </p>
 
-                <textarea
-                    name="job_description"
-                    rows="8"
-                    placeholder="Paste the job description here..."
-                ></textarea>
+    </section>
 
-                <br><br>
+    <!-- Upload Card -->
 
-                <button type="submit">
-                    Analyze Resume
-                </button>
+    <div class="upload-card">
 
-            </form>
+        <form method="POST" enctype="multipart/form-data">
 
+            <label>Resume (PDF)</label>
 
-            
+            <input
+                type="file"
+                name="resume"
+                accept=".pdf"
+                required
+            >
 
-        <div class="card">
+            <label>Job Description</label>
 
-            <h2>How It Works</h2>
+            <textarea
+                name="job_description"
+                rows="8"
+                placeholder="Paste the job description here..."
+                required
+            ></textarea>
 
-            <br>
+            <button type="submit">
 
-            <p>
-                📄 Upload Resume
-            </p>
+                Analyze Resume
 
-            <p>
-                ↓
-            </p>
+            </button>
 
-            <p>
-                🔍 Extract Resume Text
-            </p>
+        </form>
 
-            <p>
-                ↓
-            </p>
+    </div>
 
-            <p>
-                🧠 Analyze Skills
-            </p>
+    <!-- Features -->
+
+    <div class="features">
+
+        <div class="feature-card">
+
+            <div class="emoji">📊</div>
+
+            <h3>ATS Score</h3>
 
             <p>
-                ↓
-            </p>
-
-            <p>
-                📊 Match With Job Description
-            </p>
-
-            <p>
-                ↓
-            </p>
-
-            <p>
-                ✅ Generate Recommendations
+                Measure how closely your resume matches the job description.
             </p>
 
         </div>
 
-        <div class="card">
+        <div class="feature-card">
 
-            <h2>Technologies Used</h2>
+            <div class="emoji">🧠</div>
 
-            <br>
+            <h3>Skill Matching</h3>
 
             <p>
-                Python • Flask • PyPDF2 • HTML • CSS • JavaScript
+                Identify matched and missing skills instantly.
+            </p>
+
+        </div>
+
+        <div class="feature-card">
+
+            <div class="emoji">📄</div>
+
+            <h3>PDF Report</h3>
+
+            <p>
+                Download a detailed analysis report for future reference.
             </p>
 
         </div>
 
     </div>
 
-    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</div>
 
 </body>
+
 </html>

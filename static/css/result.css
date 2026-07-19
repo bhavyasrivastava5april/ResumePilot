@@ -110,6 +110,7 @@ body {
 
 .card h2{
     color:white;
+    margin-bottom:12px;
 }
 
 .count{
@@ -146,26 +147,45 @@ body {
 
 /* ---------- Suggestions ---------- */
 
-.suggestion-list{
-    list-style:none;
-    padding:0;
-}
-
-.suggestion-list li{
+.recommendation-item{
     background:#334155;
-    border-left:5px solid #6366F1;
-    color:#E2E8F0;
-    padding:15px;
-    border-radius:10px;
-    margin-bottom:15px;
+    border-left:5px solid #3B82F6;
+    padding:18px 22px;
+    margin:18px 0;
+    border-radius:14px;
+    color:#F8FAFC;
+    line-height:1.8;
+    transition:0.25s ease;
 }
 
+.recommendation-item:hover{
+    transform:translateX(4px);
+    background:#3B475C;
+}
+
+.recommendation-title{
+    color:#60A5FA;
+    font-size:30px;
+    font-weight:700;
+    margin-bottom:18px;
+  margin-top:10px;
+    margin-bottom:18px;
+}
 .success{
     color:#4ADE80;
 }
 
 .warning{
-    color:#FBBF24;
+    display:block;
+    color:#F59E0B;
+    margin-top:18px;
+    padding-left:4px;
+    line-height:1.8;
+    font-size:16px;
+    font-weight:500;
+}
+.warning-title{
+    color:#F59E0B;
 }
 
 /* ---------- Buttons ---------- */
@@ -192,13 +212,6 @@ body {
     transform:translateY(-3px);
 }
 
-/* ---------- Footer ---------- */
-
-.footer{
-    text-align:center;
-    color:#94A3B8;
-    margin-top:50px;
-}
 
 /* ---------- Mobile ---------- */
 
@@ -222,4 +235,7 @@ font-size:34px;
 .header h1{
 font-size:34px;
 }
+}
+.recommendations-card{
+    margin-bottom:30px;
 }

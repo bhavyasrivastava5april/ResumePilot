@@ -3,7 +3,6 @@ from utils.pdf_generator import generate_pdf
 from utils.suggestions import generate_recommendation
 from flask import Flask, render_template, request
 import os
-from utils.suggestions import generate_suggestions
 
 from utils.extractor import extract_resume_text
 from utils.analyzer import calculate_ats_score
@@ -41,15 +40,15 @@ def home():
         )
 
         # Generate suggestions
-    recommendation = generate_recommendation(
-    score,
-    missing_skills,
-    missing_sections
-)
+        recommendation= generate_recommendation(
+            score,
+            missing_skills,
+            missing_sections
+        )
         latest_report["score"] = score
         latest_report["matched_skills"] = matched_skills
         latest_report["missing_skills"] = missing_skills
-        latest_report["suggestions"] = suggestions
+        latest_report["recommendation"] = recommendation
         latest_report["found_sections"] = found_sections
         latest_report["missing_sections"] = missing_sections
 
@@ -58,9 +57,9 @@ def home():
             score=score,
             matched_skills=matched_skills,
             missing_skills=missing_skills,
-            suggestions=suggestions,
-             found_sections=found_sections,
-    missing_sections=missing_sections
+            found_sections=found_sections,
+            missing_sections=missing_sections,
+            recommendation=recommendation
         )
 
     return render_template("index.html")
@@ -73,7 +72,7 @@ def download_report():
         latest_report["score"],
         latest_report["matched_skills"],
         latest_report["missing_skills"],
-        latest_report["suggestions"],
+        latest_report["recommendation"],
         latest_report["found_sections"],
         latest_report["missing_sections"],
     )

@@ -1,6 +1,4 @@
-def generate_recommendation(missing_skills):
-
-   def generate_recommendation(score, missing_skills, missing_sections):
+def generate_recommendation(score, missing_skills, missing_sections):
     """
     Generate one personalized recommendation based on the resume analysis.
     """

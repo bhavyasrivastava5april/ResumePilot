@@ -4,7 +4,7 @@ from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
 
 
 def generate_pdf(score, matched_skills, missing_skills,
-                 suggestions, found_sections, missing_sections):
+                 recommendation, found_sections, missing_sections):
 
     buffer = BytesIO()
 
@@ -20,18 +20,21 @@ def generate_pdf(score, matched_skills, missing_skills,
     elements.append(Paragraph(f"<b>ATS Score:</b> {score}%", styles["Heading2"]))
     elements.append(Spacer(1, 15))
 
+    # Matched Skills
     elements.append(Paragraph("<b>Matched Skills</b>", styles["Heading2"]))
     for skill in matched_skills:
         elements.append(Paragraph(f"• {skill}", styles["BodyText"]))
 
     elements.append(Spacer(1, 15))
 
+    # Missing Skills
     elements.append(Paragraph("<b>Missing Skills</b>", styles["Heading2"]))
     for skill in missing_skills:
         elements.append(Paragraph(f"• {skill}", styles["BodyText"]))
 
     elements.append(Spacer(1, 15))
 
+    # Resume Sections
     elements.append(Paragraph("<b>Resume Sections</b>", styles["Heading2"]))
 
     for section in found_sections:
@@ -42,10 +45,9 @@ def generate_pdf(score, matched_skills, missing_skills,
 
     elements.append(Spacer(1, 15))
 
-    elements.append(Paragraph("<b>Suggestions</b>", styles["Heading2"]))
-
-    for suggestion in suggestions:
-        elements.append(Paragraph(f"• {suggestion}", styles["BodyText"]))
+    # Recommendation
+    elements.append(Paragraph("<b>AI Recommendation</b>", styles["Heading2"]))
+    elements.append(Paragraph(recommendation, styles["BodyText"]))
 
     doc.build(elements)
 
